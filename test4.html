@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Street View containers</title>
+    <style>
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans);
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+	  .map-canvas {
+	width: 100%;
+	height: 110%;
+	position: relative;
+	top: -50px;
+}
+.map-content {
+	z-index: 10;
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: 690px;
+	background-color: black;
+	color: #FFF;
+}
+#RW_container {
+	-moz-transform-origin: left top;
+	-webkit-transform-origin: left top;
+	-ms-transform-origin: left top;
+	-o-transform-origin: left top;
+	transform-origin: left top;
+	margin: 0 auto;
+	z-index: 3000;
+	left: -47px;
+	top: 6px;
+}
+html, body, #map-canvas, #RW-wrapper {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+.RW_title {
+	color: #fff;
+	display: inline;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 44px;
+	font-weight: 700;
+	line-height: 0px;
+	overflow: visible;
+	padding: 0px 0px;
+	position: absolute;
+	z-index: 65;
+	width: 650px;
+	top: 25px;
+}
+.RW_nav {
+	overflow: visible;
+	position: absolute;
+	z-index: 65;
+	margin-left: 20px;
+	overflow: visible;
+}
+.RW_nav a {
+	color: #fff;
+	text-decoration: none;
+}
+.RW_nav .top {
+	color: #fff;
+	display: block;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 26px !important;
+	position: relative;
+	font-weight: 700;
+	z-index: 1;
+}
+.RW_nav .top:before {
+	border-top: 1px solid #fff;
+	content: "";
+	position: absolute;
+	top: 16px;
+	left: 0;
+	width: 295px;
+	z-index: -1;
+	margin-left: 50px;
+}
+.RW_nav .bottom {
+	color: #fff;
+	display: block;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 18px !important;
+	padding-bottom: 38px;
+	position: relative;
+	top: 45px;
+	font-weight: 700;
+	z-index: 1;
+}
+.RW_nav .bottom :before {
+	border-top: 1px solid #fff;
+	content: "";
+	position: absolute;
+	top: 16px;
+	left: 0;
+	width: 215px;
+	z-index: -1;
+	margin-left: 128px;
+}
+.RW_nav .menu {
+	color: #fff;
+	display: block;
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 18px !important;
+	padding-bottom: 38px;
+	position: relative;
+	top: 15px;
+	font-weight: 500;
+	z-index: 1;
+}
+.menu ul {
+	list-style-type: none;
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	padding-bottom: 6px;
+}
+div, li {
+	cursor: pointer;
+}
+#div1 {
+	display: none;
+	position: absolute;
+	top: 40px;
+}
+#div2 {
+	display: none;
+	position: absolute;
+	top: 40px;
+}
+#div3 {
+	display: none;
+	position: absolute;
+	top: 40px;
+}
+#div4 {
+	display: none;
+	position: absolute;
+	top: 50px;
+}
+#img1 {
+}
+#img2 {
+}
+#img3 {
+}
+#img4 {
+}
+#div1 {
+	left: 410px;
+	top: 20px;
+	z-index:30
+}
+#div2 {
+	left: 410px;
+	top: 20px;
+	z-index:30
+}
+#div3 {
+	left: 410px;
+	z-index:30;
+	top: 20px;
+}
+#div4 {
+	left: 20px;
+}
+br {
+	clear: both;
+}
+.hot_spot {
+	z-index: 30;
+}
+.hot_spot a {
+	display: block;
+	width: 30px;
+	height: 30px;
+	border-radius: 66px;
+	border: 4px double #ccc;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fff;
+	background: #467a4a;
+	text-decoration: none;
+}
+.hot_spot a:hover {
+	display: block;
+	width: 32px;
+	height: 32px;
+	border-radius: 66px;
+}
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+function initialize() {
+  var bryantPark = new google.maps.LatLng(37.792181,-122.38967500000001);
+  var panoramaOptions = {
+    position: bryantPark,
+    pov: {
+      heading: 165,
+      pitch: 0
+    },
+    zoom: 1,
+    panControl: false,
+    zoomControl: false,
+	addressControl: false
+
+  };
+  var myPano = new google.maps.StreetViewPanorama(
+      document.getElementById('map-canvas'),
+      panoramaOptions);
+  myPano.setVisible(true);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"><iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="#"></iframe>
+  <div class="map-content">
+    <div class="RW_nav">
+      <top class="top"><span>The</span></top>
+      <h1 class="RW_title">Rainbow Warrior III</h1>
+      <bottom class="bottom"><span>get onboard</span></bottom>
+      <bottom class="menu">
+        <ul>
+          <li id="img1">cabin deck</li>
+          <li id="img2">main dec</li>
+          <li id="img3">bridge deck</li>
+        </ul>
+      </bottom>
+    </div>
+  </div>
+  <br/>
+  <div id="div1"><img src="cabin_deck_s.png" /><span class="hot_spot" style="position:absolute; top:50px; left:500px;"><a href="#">1</a></span></div>
+  <div id="div2"><img src="main_deck_s.png" /><span class="hot_spot" style="position:absolute; top:50px; left:400px;"><a href="#">1</a></span></div>
+  <div id="div3"><img src="bridge_deck_s.png" /></div>
+  <div id="div4"><img src="cabin_deck.png" /></div></div>
+    <script type="text/javascript">
+   
+   
+$("#img1").on('click', function() {
+   $("#div1").fadeIn();
+   $("#div2").fadeOut();
+   $("#div3").fadeOut();
+   $("#div4").fadeOut();
+   $('#img1').css('font-weight','700');
+   $('#img2').css('font-weight','500');
+	$('#img3').css('font-weight','500');
+	$('#search_iframe').src('http://www.cnn.com')
+});
+
+$("#img2").on('click', function() {
+   $("#div1").fadeOut();
+   $("#div2").fadeIn();
+   $("#div3").fadeOut();
+   $("#div4").fadeOut();
+    $('#img2').css('font-weight','700');
+	$('#img1').css('font-weight','500');
+	$('#img3').css('font-weight','500');
+   
+});
+
+$("#img3").on('click', function() {
+   $("#div1").fadeOut();
+   $("#div2").fadeOut();
+   $("#div3").fadeIn();
+   $("#div4").fadeOut();
+    $('#img3').css('font-weight','700');
+   $('#img1').css('font-weight','500');
+	$('#img2').css('font-weight','500');
+});
+
+$("#img4").on('click', function() {
+   $("#div1").fadeOut();
+   $("#div2").fadeOut();
+   $("#div3").fadeOut();
+   $("#div4").fadeIn();
+});
+
+</script>
+  </body>
+</html>
